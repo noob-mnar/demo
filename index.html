@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0e4d7;
+    }
+    .room {
+      position: relative;
+      width: 500px;
+      height: 400px;
+      background: #c9c9c9;
+      border: 4px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .boy {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 150px;
+      background: url('https://i.imgur.com/4AiXzf8.png') no-repeat center/contain;
+      transition: opacity 0.5s ease;
+    }
+    .boy.hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="room" id="room">
+    <div class="boy" id="boy"></div>
+  </div>
+
+  <script>
+    const room = document.getElementById('room');
+    const boy = document.getElementById('boy');
+
+    room.addEventListener('mousemove', (e) => {
+      const rect = boy.getBoundingClientRect();
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      if (
+        mouseX >= rect.left && mouseX <= rect.right &&
+        mouseY >= rect.top && mouseY <= rect.bottom
+      ) {
+        boy.classList.add('hidden');
+      } else {
+        boy.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
