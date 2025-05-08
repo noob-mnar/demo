@@ -26,14 +26,15 @@
       position: absolute;
       bottom: 20px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(1);
       width: 100px;
       height: 150px;
-      background: url('https://i.imgur.com/4AiXzf8.png') no-repeat center/contain;
-      transition: opacity 0.5s ease;
+      background: url('https://i.imgur.com/JYUbYqf.png') no-repeat center/contain;
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .boy.hidden {
       opacity: 0;
+      transform: translateX(-50%) scale(0.5);
     }
   </style>
 </head>
